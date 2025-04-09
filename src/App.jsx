@@ -18,10 +18,22 @@ function App() {
     setNewArticle('');
   };
 
+  const removeArticle = i => {
+    const update = article.filter(obj => {
+      return obj.id !== i;
+    });
+    setArticle(update);
+
+  };
+
   return (
     <>
       <ul>
-        {article.map(article => <li key={article.id}>{article.title}</li>)}
+        {article.map(article =>
+          <li key={article.id}>
+            {article.title}
+            <button onClick={() => removeArticle(article.id)}>Delete</button>
+          </li>)}
       </ul>
 
       <form onSubmit={updateArticles}>
